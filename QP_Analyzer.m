@@ -1,5 +1,5 @@
-% QuPath_Analyzer
-
+% QP_Analyzer
+%
 % This script calculates karyomegaly in cells per mm^2 and % of cells detected,
 % and generates histograms. Running the script will open a dialogue that
 % will permit the user to either select the data settings used in the study
