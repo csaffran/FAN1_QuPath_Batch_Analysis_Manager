@@ -244,7 +244,7 @@ else
             for I=1:num_WT
             
                 % Import data
-                if ww<=length(sample_prefix)%isempty(alt_prefix)
+                if ww<=length(sample_prefix)
                     csv_name=sprintf('%s%s%s',sample_prefix{ww},num2str(I),doc_type);
                 end
                 import_table=readtable(csv_name);
