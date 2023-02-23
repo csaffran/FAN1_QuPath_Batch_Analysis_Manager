@@ -1,2 +1,4 @@
 # FAN1_QuPath_Batch_Analysis_Manager
  Scripts used for automated analysis of QuPath data from histology scans generated in conjunction with FAN1-SNM1A project (2022)
+After selecting annotation regions in QuPath for your samples, use QP_Flow.groovy to batch process them by detecting cell measurements within annotated areas, and creating export files of the annotation data and cell detection data. Make sure you optomize the pixle size in line XXX. Also make sure you enter your directory path for where you want the files to be exported to.
+These export files can be used directly by QP_Analyzer.m in MATLAB (as of this writing, version R2022b) to generate an XL spreadsheet containing a summary of cell characteristics (in particular karyomegaly) by sample and tissue, as well as PDFs of histograms of nuclear size by sample. The export files from QP_Flow.groovy must be in the same folder as QP_Analyzer.m when the latter is run.
