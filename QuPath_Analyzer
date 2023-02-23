@@ -4,19 +4,76 @@
 % and generates histograms. Running the script will open a dialogue that
 % will permit the user to either select the data settings used in the study
 % for which the script was authored (Choices 1 - 3), or to enter their own
-% parameters (Choice 4). 
+% parameters (Choice 4).
 %
-% The required input are QuPath cell detection exports and the corresponding 
+% The required input are QuPath cell detection exports and the corresponding
 % annotation exports (all as .txt docs), and these should be in the folder from
 % where QuPath_Analyzer is launched.
 %
-% The summary data will be displayed on the screen as a table, and exported 
-% in an excel spreadsheet in the folder from where QuPath_Analyzer is launched. 
-% Histograms (if selected) will be exported as PDFs to the same folder. 
+% For example, let’s say you’re analyzing karyomegaly in the renal cortex and
+% renal medulla of six mice, 3 WT controls, and 3 test anmials. You import six
+% slide scans into a QuPath project, then select annotation regions
+% corresponding to your tissues of interest (let’s say you name them “Cortex”
+% and “Medulla”) and run cell detection (Analyze > Cell detection > Cell
+% detection) for each sample. You will then need to export the annotations
+% (Measure > Show annotation measurements > Save) because these contains the
+% areas of the annotation regions, and the cell detections (Measure > Show
+% detection measurements > Save) because these contain all the data from each
+% cell in each annotation. You will end up with six short annotation files and
+% six long detection files. Let’s say you name them as follows:
+%
+% Kidney_annotation_1.txt
+% Kidney_annotation_2.txt
+% Kidney_annotation_3.txt
+% Kidney_annotation_4.txt
+% Kidney_annotation_5.txt
+% Kidney_annotation_6.txt
+% Kidney_1.txt
+% Kidney_2.txt
+% Kidney_3.txt
+% Kidney_4.txt
+% Kidney_5.txt
+% Kidney_6.txt
+%
+% The annotation files will contain a header, plus one line for every
+% annotation (in this case, two lines). The detection files will contain a
+% header plus one line for every cell (may be hundreds of thousands of lines).
+%
+% Move these files into the folder containing QuPath_Analyzer. Run
+% QuPath_Analyzer and when prompted to select tissue enter “4” for User Input.
+%
+% When prompted, you would enter “Kidney_annotation” as the prefix for the
+% annotation files, then “Cortex” for the first tissue, and enter “Kidney” for
+% the prefix for the cell detection files. When asked whether you want to enter
+% another tissue, you would enter “1” for YES, then “Medulla” for the next
+% tissue, and “Kidney” again for the prefix for the cell detection files.
+% You’re asked to enter the cell detection prefix this for each tissue in the
+% event you’ve exported the cell detection files one tissue at a time to keet
+% the file sizes manageable. But here, we’ve done both tissues together, so the
+% column labeled Parent will indicate which tissue annotation each cell belongs
+% to (in this case Cortex or Medulla), so the prefix is the same for all
+% tissues. Finally, when asked if you want to enter another tissue you enter
+% “2” for NO.
+%
+% Next you’ll be asked for the karyomegaly threshold you want to use. If you
+% don’t know, just hit Enter, and you’ll be asked how many of your samples are
+% WT controls. In this case, you would enter 3. Then QuPath_Analyzer will use
+% the first three samples from each tissue to calculate a threshold that is 2
+% SD above the mean.
+%
+% Once the threshold is established (either by you entering it, or it being
+% calculated from the controls), QuPath_Analyzer will analyze your cell data
+% and  calculate karyomegalic cells per mm^2 and percent karyomegalic cells.
+%
+% The summary data will be displayed on the screen as a table, and exported
+% in an excel spreadsheet in the folder from where QuPath_Analyzer is launched.
+% Histograms (if selected) will be generated and exported as PDFs to the same
+% folder.
 %
 % The pertinent data is also saved as a .mat file with a unique file name
 % based on the date and time, and as a default file called last_run.mat, so
 % the data from the most recent run can always be readily retrieved.
+
 
 % Housekeeping
 clear
